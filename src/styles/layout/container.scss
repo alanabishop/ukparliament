@@ -1,4 +1,11 @@
+@use "../utils/mixins";
+
 .container {
-  margin: 0 auto;
-  max-width: 300px;
+  padding-top: 30px;
+  margin: 30px 15px;
+
+  @include mixins.breakpoints("large") {
+    margin: 0px auto;
+    max-width: 450px;
+  }
 }

@@ -1,0 +1,33 @@
+// Colours
+$white: #ffffff;
+$black: #000000;
+
+$brand: #373151;
+$grey-2: #4d4d4d;
+$grey-1: #f4f1f1;
+$alert: #a72326;
+$background: $white;
+
+// Font Families
+$font-family: Verdana, Arial, sans-serif;
+
+// Font Sizes
+$primary-font-size--small: 26px;
+$primary-font-size--large: 30px;
+
+$secondary-font-size--small: 20px;
+$secondary-font-size--large: 22px;
+
+$tertiary-font-size--small: 18px;
+$tertiary-font-size--large: 18px;
+
+//Line Heights
+$primary-line-height: 1.25rem;
+$secondary-line-height: 1.35rem;
+$tertiary-line-height: 1.5rem;
+
+//Breakpoints
+
+$breakpoints: (
+  "large": 501px,
+) !default;

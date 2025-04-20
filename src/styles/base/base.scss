@@ -1,2 +1,9 @@
 @forward "./reset";
-@forward "./typography";
+
+main {
+  width: 100%;
+}
+
+html {
+  font-size: 18px;
+}
