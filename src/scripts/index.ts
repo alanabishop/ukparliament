@@ -78,7 +78,10 @@ class Main {
 
     try {
       const response = await fetch(apiUrl);
-      if (!response.ok) throw new Error("No member has been found with ID");
+      if (!response.ok)
+        throw new Error(
+          `Member not found. Status: ${response.status}, ID: ${id}`
+        );
 
       const data: TeamMember = await response.json();
 
@@ -88,7 +91,6 @@ class Main {
       this.showErrorMessage();
       console.error("Failed to fetch team data:", error);
     }
-    this.hideSpinner();
   }
 
   private populateTeamData(member: TeamMember) {
@@ -104,22 +106,17 @@ class Main {
     for (const [key, value] of Object.entries(dataMap)) {
       const element = this.domElements[key as keyof typeof this.domElements];
 
-      if (element) {
+      if (element && value) {
         element.textContent = value;
-      } else {
-        this.displayConsoleWarning(`.card__${key}`);
       }
     }
 
     if (latestParty.backgroundColour && this.domElements.thumbnail) {
-      console.log(latestParty.backgroundColour);
       this.domElements.thumbnail.style.borderColor = `#${latestParty.backgroundColour}`;
     }
 
-    if (this.domElements.thumbnailImage) {
+    if (this.domElements.thumbnailImage && thumbnailUrl) {
       this.domElements.thumbnailImage.src = thumbnailUrl;
-    } else {
-      this.displayConsoleWarning(".card__thumbnailImage");
     }
 
     const { membershipEndDate } = latestHouseMembership;
@@ -136,24 +133,18 @@ class Main {
   private showContent() {
     if (this.domElements.cardInner) {
       this.domElements.cardInner.style.display = "flex";
-    } else {
-      this.displayConsoleWarning(".card__inner");
     }
 
     this.hideSpinner();
   }
 
-  private displayConsoleWarning(element: string) {
-    console.warn(`Element '${element} not found in the DOM.`);
-  }
-
-  showErrorMessage() {
+  private showErrorMessage() {
     this.domElements.errorMessage.style.display = "block";
     this.domElements.cardInner.style.display = "hidden";
     this.hideSpinner();
   }
 
-  hideSpinner() {
+  private hideSpinner() {
     this.domElements.spinner.style.display = "none";
   }
 }
