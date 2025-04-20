@@ -120,7 +120,7 @@ body {
   border-radius: 50%;
   position: relative;
   animation: rotate 1s linear infinite;
-  display: none;
+  margin: 0 auto;
 }
 .card__spinner::before {
   content: "";
@@ -128,7 +128,7 @@ body {
   position: absolute;
   inset: 0px;
   border-radius: 50%;
-  border: 3px solid #000;
+  border: 3px solid #373151;
   animation: prixClipFix 2s linear infinite;
 }
 
@@ -156,6 +156,15 @@ body {
 }
 .card__error {
   display: none;
+  color: #a72326;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5rem;
+}
+@media (min-width: 501px) {
+  .card__error {
+    font-size: 18px;
+  }
 }
 
 .card__thumbnail {
@@ -165,6 +174,7 @@ body {
   height: 60px;
   flex-shrink: 0;
   position: relative;
+  overflow: hidden;
 }
 @media (min-width: 501px) {
   .card__thumbnail {
@@ -185,13 +195,13 @@ body {
 .card__servingNotice {
   padding: 10px 15px;
   background-color: #f4f1f1;
-  margin-bottom: 10px;
   width: 100%;
   border-radius: 5px;
+  margin-top: 20px;
+  display: none;
 }
 @media (min-width: 501px) {
   .card__servingNotice {
-    margin-bottom: 15px;
     padding: 15px;
   }
 }
@@ -211,20 +221,20 @@ body {
 
 .card {
   background-color: #ffffff;
-  padding: 15px 15px 0;
+  padding: 15px 15px 10px;
   width: 100%;
   border-top: solid 5px #373151;
 }
 @media (min-width: 501px) {
   .card {
-    padding: 20px 20px 0;
+    padding: 20px 20px 15px;
     border-left: solid 5px #373151;
     border-top: none;
   }
 }
 
 .card__inner {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: flex-start;
   row-gap: 20px;
@@ -284,7 +294,6 @@ body {
 
 .card__constituency {
   color: #4d4d4d;
-  margin-bottom: 20px;
   font-family: Verdana, Arial, sans-serif;
   font-size: 18px;
   line-height: 1.5rem;

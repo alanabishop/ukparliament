@@ -8,6 +8,7 @@
   height: 60px;
   flex-shrink: 0;
   position: relative;
+  overflow: hidden;
 
   @include mixins.breakpoints("large") {
     border-width: 5px;

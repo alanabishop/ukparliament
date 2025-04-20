@@ -1,3 +1,5 @@
+@use "../../utils/variables";
+
 .card__spinner {
   width: 40px;
   height: 40px;
@@ -5,7 +7,7 @@
   border-radius: 50%;
   position: relative;
   animation: rotate 1s linear infinite;
-  display: none;
+  margin: 0 auto;
 
   &::before {
     content: "";
@@ -13,7 +15,7 @@
     position: absolute;
     inset: 0px;
     border-radius: 50%;
-    border: 3px solid #000;
+    border: 3px solid variables.$brand;
     animation: prixClipFix 2s linear infinite;
   }
 }
