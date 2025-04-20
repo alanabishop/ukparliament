@@ -1,0 +1,7 @@
+@use "../utils/variables";
+@use "../utils/mixins";
+
+body {
+  background-color: variables.$grey-1;
+  overflow: hidden;
+}
