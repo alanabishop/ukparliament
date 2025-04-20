@@ -1,2 +1,68 @@
 @forward "./loader";
 @forward "./error";
+@forward "./thumbnail";
+@forward "./serving-notice";
+
+@use "../../utils/variables";
+@use "../../utils/mixins";
+
+.card {
+  background-color: variables.$background;
+  padding: 15px 15px 0;
+  width: 100%;
+  border-top: solid 5px variables.$brand;
+
+  @include mixins.breakpoints("large") {
+    padding: 20px 20px 0;
+    border-left: solid 5px variables.$brand;
+    border-top: none;
+  }
+}
+
+.card__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  row-gap: 20px;
+  column-gap: 20px;
+
+  @include mixins.breakpoints("large") {
+    flex-direction: column;
+  }
+}
+
+.card__innerTextContainer {
+  flex: 1;
+
+  @include mixins.breakpoints("large") {
+    width: 100%;
+  }
+}
+
+.card__partyName {
+  color: variables.$grey-2;
+  margin-bottom: 5px;
+
+  @include mixins.text-secondary;
+  @include mixins.breakpoints("large") {
+    margin-bottom: 10px;
+  }
+}
+
+.card__displayName {
+  font-weight: bold;
+  color: variables.$brand;
+  margin-bottom: 15px;
+  @include mixins.text-primary;
+
+  @include mixins.breakpoints("large") {
+    margin-bottom: 20px;
+  }
+}
+
+.card__constituency {
+  color: variables.$grey-2;
+  margin-bottom: 20px;
+
+  @include mixins.text-tertiary;
+}

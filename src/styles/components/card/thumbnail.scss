@@ -1,0 +1,25 @@
+@use "../../utils/variables";
+@use "../../utils/mixins";
+
+.card__thumbnail {
+  border-radius: 100%;
+  border: solid 3px variables.$brand;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  position: relative;
+
+  @include mixins.breakpoints("large") {
+    border-width: 5px;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.card__thumbnailImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

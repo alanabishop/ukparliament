@@ -1,0 +1,51 @@
+@use "sass:map";
+@use "./variables";
+
+//Breakpoints
+@mixin breakpoints($breakpoint) {
+  @if map.has-key(variables.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(variables.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map.keys(variables.$breakpoints)}.";
+  }
+}
+
+//Typography
+@mixin text-primary {
+  font-family: variables.$font-family;
+
+  font-size: variables.$primary-font-size--small;
+
+  line-height: variables.$primary-line-height;
+
+  @include breakpoints("large") {
+    font-size: variables.$primary-font-size--large;
+  }
+}
+
+@mixin text-secondary {
+  font-family: variables.$font-family;
+
+  font-size: variables.$secondary-font-size--small;
+
+  line-height: variables.$secondary-line-height;
+
+  @include breakpoints("large") {
+    font-size: variables.$secondary-font-size--large;
+  }
+}
+
+@mixin text-tertiary {
+  font-family: variables.$font-family;
+
+  font-size: variables.$tertiary-font-size--small;
+
+  line-height: variables.$tertiary-line-height;
+
+  @include breakpoints("large") {
+    font-size: variables.$tertiary-font-size--large;
+  }
+}
