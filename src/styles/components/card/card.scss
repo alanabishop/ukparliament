@@ -1,4 +1,4 @@
-@forward "./loader";
+@forward "./spinner";
 @forward "./error";
 @forward "./thumbnail";
 @forward "./serving-notice";
@@ -8,19 +8,19 @@
 
 .card {
   background-color: variables.$background;
-  padding: 15px 15px 0;
+  padding: 15px 15px 10px;
   width: 100%;
   border-top: solid 5px variables.$brand;
 
   @include mixins.breakpoints("large") {
-    padding: 20px 20px 0;
+    padding: 20px 20px 15px;
     border-left: solid 5px variables.$brand;
     border-top: none;
   }
 }
 
 .card__inner {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: flex-start;
   row-gap: 20px;
@@ -62,7 +62,5 @@
 
 .card__constituency {
   color: variables.$grey-2;
-  margin-bottom: 20px;
-
   @include mixins.text-tertiary;
 }
