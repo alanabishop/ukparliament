@@ -19,7 +19,7 @@ class Main {
 
   private domElements: {
     errorMessage: HTMLParagraphElement | null;
-    firstName: HTMLHeadingElement | null;
+    displayName: HTMLHeadingElement | null;
     cardInner: HTMLDivElement | null;
     spinner: HTMLDivElement | null;
     partyName: HTMLParagraphElement | null;
@@ -29,7 +29,7 @@ class Main {
     thumbnail: HTMLElement | null;
   } = {
     errorMessage: null,
-    firstName: null,
+    displayName: null,
     cardInner: null,
     spinner: null,
     partyName: null,
@@ -48,7 +48,7 @@ class Main {
     this.domElements = {
       errorMessage: document.querySelector(".card__error"),
       cardInner: document.querySelector(".card__inner"),
-      firstName: document.querySelector(`.card__displayName`),
+      displayName: document.querySelector(".card__displayName"),
       spinner: document.querySelector(".card__spinner"),
       partyName: document.querySelector(".card__partyName"),
       constituency: document.querySelector(".card__constituency"),
@@ -97,30 +97,39 @@ class Main {
     const { nameDisplayAs, latestParty, latestHouseMembership, thumbnailUrl } =
       member.value;
 
-    const dataMap = {
-      firstName: nameDisplayAs,
+    this.setTextContent({
+      displayName: nameDisplayAs,
       partyName: latestParty.name,
       constituency: latestHouseMembership.membershipFrom,
-    };
+    });
 
+    this.setThumbnailImage(thumbnailUrl);
+    this.setPartyBorderColor(latestParty.backgroundColour);
+    this.setServingNotice(latestHouseMembership.membershipEndDate);
+  }
+
+  private setTextContent(dataMap: { [key: string]: string }) {
     for (const [key, value] of Object.entries(dataMap)) {
       const element = this.domElements[key as keyof typeof this.domElements];
-
       if (element && value) {
         element.textContent = value;
       }
     }
+  }
 
-    if (latestParty.backgroundColour && this.domElements.thumbnail) {
-      this.domElements.thumbnail.style.borderColor = `#${latestParty.backgroundColour}`;
+  private setThumbnailImage(url: string) {
+    if (this.domElements.thumbnailImage && url) {
+      this.domElements.thumbnailImage.src = url;
     }
+  }
 
-    if (this.domElements.thumbnailImage && thumbnailUrl) {
-      this.domElements.thumbnailImage.src = thumbnailUrl;
+  private setPartyBorderColor(color: string) {
+    if (color && this.domElements.thumbnail) {
+      this.domElements.thumbnail.style.borderColor = `#${color}`;
     }
+  }
 
-    const { membershipEndDate } = latestHouseMembership;
-
+  private setServingNotice(membershipEndDate: string) {
     if (
       membershipEndDate &&
       new Date(membershipEndDate) < new Date() &&
@@ -139,13 +148,19 @@ class Main {
   }
 
   private showErrorMessage() {
-    this.domElements.errorMessage.style.display = "block";
-    this.domElements.cardInner.style.display = "hidden";
+    if (this.domElements.errorMessage) {
+      this.domElements.errorMessage.style.display = "block";
+    }
+    if (this.domElements.cardInner) {
+      this.domElements.cardInner.style.display = "none";
+    }
     this.hideSpinner();
   }
 
   private hideSpinner() {
-    this.domElements.spinner.style.display = "none";
+    if (this.domElements.spinner) {
+      this.domElements.spinner.style.display = "none";
+    }
   }
 }
 
