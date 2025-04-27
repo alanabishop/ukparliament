@@ -2,6 +2,8 @@
 
 A web application that displays UK parliament member information based on URL query parameters.
 
+---
+
 ### Installation
 
 1. Clone the repository into [directory-name]:
@@ -22,6 +24,8 @@ A web application that displays UK parliament member information based on URL qu
    npm run start
    ```
 
+---
+
 ### Usage
 
 1. The application will automatically open in your default browser at `http://localhost:8080`
@@ -39,6 +43,8 @@ A web application that displays UK parliament member information based on URL qu
    - Show loading indicators during API calls
    - Display error messages if there is no member ID, or the member ID is not valid.
 
+---
+
 ### Project Structure
 
 ```text
@@ -54,12 +60,16 @@ A web application that displays UK parliament member information based on URL qu
 └── webpack.config.js   # Build config
 ```
 
+---
+
 ### Available Scripts
 
 | Script      | Description               |
 | ----------- | ------------------------- |
 | `npm start` | Starts development server |
 | `npm build` | Creates production build  |
+
+---
 
 ### Troubleshooting
 
