@@ -29,8 +29,11 @@ module.exports = {
   devServer: {
     static: "./public",
     devMiddleware: {
-      writeToDisk: true,
+      writeToDisk: (filePath) => {
+        return !/hot-update\.(js|json)$/.test(filePath);
+      },
     },
+    hot: "only",
   },
   output: {
     path: path.resolve(__dirname, "public"),
